@@ -37,8 +37,10 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    border: 1px solid var(--Rose-900);
+    border: 1px solid var(--Rose-500);
     border-radius: 20px;
+    color: var(--Dark);
+    background-color: var(--White);
 }
 
 .item-faded-name{
