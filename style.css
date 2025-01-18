@@ -128,9 +128,9 @@ li .item-detail{
 }
 
 button.del{
-    width: 20px;
+    width: 25px;
     border-radius: 50%;
     border: 1px solid var(--Rose-400);
-    padding: 5px;
+    padding: 4px;
     background-color: inherit;
 }
