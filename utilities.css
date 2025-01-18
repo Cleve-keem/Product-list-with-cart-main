@@ -14,16 +14,20 @@
   --Rose-900: hsl(14, 65%, 9%);
 
   --light-grey: hsl(0, 4%, 61%);
-  --White: hsl(0, 0%, 100%); 
-  --Dark: hsl(0, 0%, 0%); 
+  --White: hsl(0, 0%, 100%);
+  --Dark: hsl(0, 0%, 0%);
 }
 
-img{
-    width: 100%;
-    display: block;
-    object-fit: cover;
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
-img.icon{
-    width: 20px;
+img.icon {
+  width: 20px;
+}
+
+.hidden {
+  display: none;
 }
