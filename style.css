@@ -161,19 +161,20 @@ button.del {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0.5rem;
+  gap: 5px;
+  padding: 1em 0.2em;
   background-color: var(--Rose-100);
   border-radius: 10px;
   margin-bottom: 1rem;
   font-size: 14px;
 }
 
-.order-btn{
-    width: 100%;
-    border: none;
-    border-radius: 20px;
-    padding: 13px 0;
-    background-color: var(--Red);
-    color: var(--Rose-50);
-    font-weight: bold;
+.order-btn {
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  padding: 13px 0;
+  background-color: var(--Red);
+  color: var(--Rose-50);
+  font-weight: bold;
 }
