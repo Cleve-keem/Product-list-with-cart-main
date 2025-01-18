@@ -32,3 +32,8 @@ img.icon {
 .hidden {
   display: none;
 }
+
+.em-700{
+  font-weight: 700;   
+ }
+ 

@@ -194,7 +194,7 @@
         <div class="cart">
           <h2 class="cart-heading">Your Cart (0)</h2>
           <!-- empty cart container -->
-          <div class="cart-empty">
+          <div class="cart-empty hidden">
             <img
               src="./assets/images/illustration-empty-cart.svg"
               alt="empty-cart"
@@ -203,7 +203,7 @@
             <p>Your added items will appear here</p>
           </div>
           <!-- List of cart items -->
-          <div class="hidden">
+          <div class="cart-preview">
             <ul class="cart-list">
               <li class="list-item">
                 <h3>Classic Tiramisu</h3>
@@ -214,7 +214,7 @@
                     <span class="item-total">$5.50</span>
                   </div>
                   <button class="del">
-                    <img src="./assets/images/icon-remove-item.svg" alt="del">
+                    <img src="./assets/images/icon-remove-item.svg" alt="del" />
                   </button>
                 </div>
               </li>
@@ -227,7 +227,7 @@
                     <span class="item-total">$5.50</span>
                   </div>
                   <button class="del">
-                    <img src="./assets/images/icon-remove-item.svg" alt="del">
+                    <img src="./assets/images/icon-remove-item.svg" alt="del" />
                   </button>
                 </div>
               </li>
@@ -240,11 +240,28 @@
                     <span class="item-total">$5.50</span>
                   </div>
                   <button class="del">
-                    <img src="./assets/images/icon-remove-item.svg" alt="del">
+                    <img src="./assets/images/icon-remove-item.svg" alt="del" />
                   </button>
                 </div>
               </li>
             </ul>
+            <div class="order-details">
+              <div class="order-total">
+                <p>Order Total</p>
+                <span class="order-price">$46.50</span>
+              </div>
+              <div class="delivery-msg">
+                <img
+                  class="icon"
+                  src="./assets/images/icon-carbon-neutral.svg"
+                  alt="carbon-neutral"
+                />
+                <p>
+                  This is <span class="em-700">carbon-neutral</span> delivery
+                </p>
+              </div>
+              <button class="order-btn">Confirm Order</button>
+            </div>
           </div>
         </div>
       </div>

@@ -54,14 +54,14 @@
   color: var(--Red);
 }
 
-.item-container.active .img-container img{
+.item-container.active .img-container img {
   border: 3px solid var(--Red);
 }
 
 .cart {
   font-family: "RedHotText-Bold";
   background-color: var(--White);
-  padding: 1rem;
+  padding: 2rem;
   margin-top: 2.5rem;
   border-radius: 10px;
 }
@@ -78,59 +78,101 @@
   align-items: center;
   margin: 1rem 0;
 }
+
+.cart-empty p {
+  color: var(--Rose-500);
+}
+
 .cart-img {
   width: 180px;
   margin-bottom: 1rem;
 }
 
-.cart p {
-  color: var(--Rose-500);
+.cart-list {
+  list-style: none;
 }
 
-.cart-list{
-    list-style: none;
+li {
+  padding: 1.5rem 0;
+  border-bottom: 2px solid var(--Rose-100);
 }
 
-li{
-    padding: 1.5rem 0;
-    border-bottom: 2px solid var(--Rose-100);
+li h3 {
+  margin-bottom: 1rem;
 }
 
-li h3{
-    margin-bottom: 1rem;
-}
-
-li .item-detail{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+li .item-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .item-price-details {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-.quantity{
-    color: var(--Red);
+.quantity {
+  color: var(--Red);
 }
 
-.price, .item-total{
-    color: var(--Rose-900);
+.price,
+.item-total {
+  color: var(--Rose-900);
 }
 
 .price {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
-.item-total{
-    opacity: 0.7;
+.item-total {
+  opacity: 0.7;
 }
 
-button.del{
-    width: 25px;
-    border-radius: 50%;
-    border: 1px solid var(--Rose-400);
-    padding: 4px;
-    background-color: inherit;
+button.del {
+  width: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--Rose-400);
+  padding: 4px;
+  background-color: inherit;
+}
+
+.order-details {
+  margin: 2rem 0;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.order-details p {
+  font-family: "RedHatText-Regular";
+}
+
+.order-total .order-price {
+  font-size: 20px;
+}
+
+.delivery-msg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  background-color: var(--Rose-100);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.order-btn{
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 13px 0;
+    background-color: var(--Red);
+    color: var(--Rose-50);
+    font-weight: bold;
 }
