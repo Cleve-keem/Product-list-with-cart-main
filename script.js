@@ -4,13 +4,13 @@ const placeOrderBtn = document.getElementById("confirm-order-btn");
 const overlay = document.getElementById("overlay");
 
 placeOrderBtn.addEventListener("click", ()=>{
-    orderNotification.classList.add("hidden");
+    orderNotification.classList.toggle("hidden");
 })
 
 overlay.addEventListener("click", ()=>{
-    orderNotification.classList.remove("hidden");
+    orderNotification.classList.toggle("hidden");
 })
 
 startNewOrderbtn.addEventListener("click", ()=>{
-    orderNotification.classList.remove("hidden");
+    orderNotification.classList.toggle("hidden");
 })
