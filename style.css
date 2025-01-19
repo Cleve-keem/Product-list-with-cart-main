@@ -267,3 +267,41 @@ button.del {
 .order-details-preview{
   margin: 1rem 0;
 }
+
+
+@media screen and (min-width: 700px){
+  .wrapper{
+    padding: 4rem;
+  }
+  .product-items-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .confirmation{
+    max-width: 400px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* inset: 0; */
+  }
+}
+
+@media screen and (min-width: 1000px){
+  .container{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 2rem;
+  }
+
+  .product-items-container{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  section.cart{
+    height: fit-content;
+    margin-top: 0;
+  }
+}
