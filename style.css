@@ -1,12 +1,14 @@
 @import url("./fonts.css");
 
-body{
+body {
   position: relative;
 }
 
 .wrapper {
   padding: 2rem;
+  height: 100vh;
   background-color: var(--Rose-50);
+  overflow: scroll;
 }
 
 .products h1 {
@@ -186,8 +188,8 @@ button.del {
   color: var(--Rose-50);
 }
 
-.overlay{
-  position: absolute;
+.overlay {
+  position: fixed;
   background-color: var(--Dark);
   opacity: 0.5;
   width: 100%;
