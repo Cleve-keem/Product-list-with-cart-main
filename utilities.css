@@ -29,6 +29,11 @@ img.icon {
   width: 20px;
 }
 
+.thumbnail{
+  width: 60px;
+  border-radius: 5px;
+}
+
 .hidden {
   display: none;
 }

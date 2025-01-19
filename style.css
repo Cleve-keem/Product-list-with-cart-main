@@ -8,12 +8,12 @@ body {
   padding: 2rem;
   height: 100vh;
   background-color: var(--Rose-50);
-  overflow: scroll;
+  overflow: auto;
 }
 
 .products h1 {
   margin-bottom: 1.5rem;
-  font-family: "RedHotText-Bold", sans-serif;
+  font-family: "RedHatText-Bold", sans-serif;
 }
 
 .item-view {
@@ -51,7 +51,7 @@ body {
 
 .item-faded-name {
   color: var(--light-grey);
-  font-family: "RedHotText-Regular", system-ui;
+  font-family: "RedHatText-Regular", system-ui;
   margin-bottom: 0.3rem;
 }
 
@@ -65,7 +65,7 @@ body {
 }
 
 .cart {
-  font-family: "RedHotText-Bold";
+  font-family: "RedHatText-Bold";
   background-color: var(--White);
   padding: 2rem;
   margin-top: 2.5rem;
@@ -122,6 +122,7 @@ li .item-detail {
 
 .quantity {
   color: var(--Red);
+  font-family: "RedHatText-Bold";
 }
 
 .price,
@@ -131,10 +132,12 @@ li .item-detail {
 
 .price {
   opacity: 0.5;
+  font-family: "RedHatText-Regular";
 }
 
 .item-total {
   opacity: 0.7;
+  font-family: "RedHatText-Bold";
 }
 
 button.del {
@@ -200,24 +203,57 @@ button.del {
 }
 
 .confirmation {
-  width: 100%;
+  max-height: 90vh;
   position: absolute;
-  top: 100px;
+  top: 80px;
   bottom: 0;
+  left: 0;
+  right: 0;
   padding: 1.5rem;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: var(--Rose-100);
+  background-color: var(--Rose-50);
 }
 
 .confirmed-img {
   width: 40px;
   display: block;
-  margin: 0 auto 1rem;
+  margin: 0 0 1rem;
+}
+
+.confirmation h1 {
+  font-family: "RedHatText-Bold";
+  font-size: 40px;
+  line-height: 43px;
+  margin-bottom: 1rem;
+}
+
+.confirmation p {
+  font-family: "RedHatText-SemiBold";
+  color: var(--Rose-500);
+  margin-bottom: 2rem;
+}
+
+.confirmation ul.sold-list {
+  background-color: var(--Rose-100);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .sold-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  border-bottom: 1px solid var(--Rose-50);
+}
+
+.sold-desc {
+  display: flex;
+  gap: 1rem;
+  /* align-items: center; */
+}
+
+.item-price-details.order {
+  line-height: 16px;
 }
