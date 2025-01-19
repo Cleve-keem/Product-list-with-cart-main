@@ -1,4 +1,8 @@
-@import url("/fonts.css");
+@import url("./fonts.css");
+
+body{
+  position: relative;
+}
 
 .wrapper {
   padding: 2rem;
@@ -180,4 +184,38 @@ button.del {
   padding: 15px 0;
   background-color: var(--Red);
   color: var(--Rose-50);
+}
+
+.overlay{
+  position: absolute;
+  background-color: var(--Dark);
+  opacity: 0.5;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.confirmation {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  padding: 1.5rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: var(--Rose-100);
+}
+
+.confirmed-img {
+  width: 40px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.sold-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
