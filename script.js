@@ -1,16 +1,16 @@
 const startNewOrderbtn = document.getElementById("order-btn-start");
-const orderNotification = document.getElementById("order-confirmation-notification");
+const orderNotification = document.getElementById(
+  "order-confirmation-notification"
+);
 const placeOrderBtn = document.getElementById("confirm-order-btn");
 const overlay = document.getElementById("overlay");
 
-placeOrderBtn.addEventListener("click", ()=>{
-    orderNotification.classList.toggle("hidden");
-})
+const HIDDEN_CLASS = "hidden";
 
-overlay.addEventListener("click", ()=>{
-    orderNotification.classList.toggle("hidden");
-})
+function toggleOrderNotification() {
+  orderNotification.classList.toggle(HIDDEN_CLASS);
+}
 
-startNewOrderbtn.addEventListener("click", ()=>{
-    orderNotification.classList.toggle("hidden");
-})
+placeOrderBtn.addEventListener("click", toggleOrderNotification);
+overlay.addEventListener("click", toggleOrderNotification);
+startNewOrderbtn.addEventListener("click", toggleOrderNotification);
