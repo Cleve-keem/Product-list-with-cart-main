@@ -260,14 +260,16 @@
                   This is <span class="em-700">carbon-neutral</span> delivery
                 </p>
               </div>
-              <button class="order-btn">Confirm Order</button>
+              <button class="order-btn" id="confirm-order-btn">
+                Confirm Order
+              </button>
             </div>
           </div>
         </section>
       </div>
     </div>
-    <div class="order-confirmation">
-      <div class="overlay"></div>
+    <div class="order-confirmation hidden" id="order-confirmation-notification">
+      <div id="overlay"></div>
       <div class="confirmation">
         <img
           src="./assets/images/icon-order-confirmed.svg"
@@ -281,7 +283,7 @@
             <li class="sold-item">
               <div class="sold-desc">
                 <img
-                class="thumbnail"
+                  class="thumbnail"
                   src="./assets/images/image-tiramisu-thumbnail.jpg"
                   alt="tiramisu thumbnail image"
                 />
@@ -302,7 +304,7 @@
             <li class="sold-item">
               <div class="sold-desc">
                 <img
-                class="thumbnail"
+                  class="thumbnail"
                   src="./assets/images/image-tiramisu-thumbnail.jpg"
                   alt="tiramisu thumbnail image"
                 />
@@ -323,7 +325,7 @@
             <li class="sold-item">
               <div class="sold-desc">
                 <img
-                class="thumbnail"
+                  class="thumbnail"
                   src="./assets/images/image-tiramisu-thumbnail.jpg"
                   alt="tiramisu thumbnail image"
                 />
@@ -344,7 +346,7 @@
             <li class="sold-item">
               <div class="sold-desc">
                 <img
-                class="thumbnail"
+                  class="thumbnail"
                   src="./assets/images/image-tiramisu-thumbnail.jpg"
                   alt="tiramisu thumbnail image"
                 />
@@ -370,8 +372,10 @@
             </div>
           </div>
         </section>
-        <button class="order-btn">Start New Order</button>
+        <button class="order-btn" id="order-btn-start">Start New Order</button>
       </div>
     </div>
+    <!-- SCRIPTS JS-->
+    <script src="script.js"></script>
   </body>
 </html>
