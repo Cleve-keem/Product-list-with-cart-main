@@ -156,15 +156,15 @@ button.del {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-}
-
-.order-details p {
   font-family: "RedHatText-Regular";
 }
 
 .order-total .order-price {
   font-size: 20px;
+}
+
+.order-price{
+  font-family: "RedHatText-Bold";
 }
 
 .delivery-msg {
@@ -176,13 +176,14 @@ button.del {
   padding: 1em 0.2em;
   background-color: var(--Rose-100);
   border-radius: 10px;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 14px;
+  font-family: "RedHatText-Regular";
 }
 
 .order-btn {
   width: 100%;
-  font-family: "RedHatText-Regular";
   font-size: 16px;
   border: none;
   border-radius: 25px;
@@ -235,19 +236,23 @@ button.del {
   margin-bottom: 2rem;
 }
 
-.confirmation ul.sold-list {
+.sales-preview{
   background-color: var(--Rose-100);
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .sold-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
   border-bottom: 1px solid var(--Rose-50);
 }
+
+/* .sold-item:last-child{
+  border-bottom: none;
+} */
 
 .sold-desc {
   display: flex;
@@ -257,4 +262,8 @@ button.del {
 
 .item-price-details.order {
   line-height: 16px;
+}
+
+.order-details-preview{
+  margin: 1rem 0;
 }
