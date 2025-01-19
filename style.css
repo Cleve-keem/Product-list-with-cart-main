@@ -213,6 +213,7 @@ button.del {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--Rose-50);
+  overflow-y: auto;
 }
 
 .confirmed-img {
