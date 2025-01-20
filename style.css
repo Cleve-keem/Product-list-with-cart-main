@@ -31,6 +31,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.item-container.active .item-view .item-img {
+  border: 3px solid var(--Red);
+}
+
 .item-view img {
   border-radius: 9px;
 }
@@ -163,7 +167,7 @@ button.del {
   font-size: 20px;
 }
 
-.order-price{
+.order-price {
   font-family: "RedHatText-Bold";
 }
 
@@ -236,7 +240,7 @@ button.del {
   margin-bottom: 2rem;
 }
 
-.sales-preview{
+.sales-preview {
   background-color: var(--Rose-100);
   padding: 1rem 2rem;
   border-radius: 10px;
@@ -264,22 +268,21 @@ button.del {
   line-height: 16px;
 }
 
-.order-details-preview{
+.order-details-preview {
   margin: 1rem 0;
 }
 
-
-@media screen and (min-width: 700px){
-  .wrapper{
+@media screen and (min-width: 700px) {
+  .wrapper {
     padding: 4rem;
   }
-  .product-items-container{
+  .product-items-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .confirmation{
+  .confirmation {
     max-width: 400px;
     /* max-height: 400px; */
     inset: 0;
@@ -289,26 +292,26 @@ button.del {
   }
 }
 
-@media screen and (min-width: 1000px){
-  .container{
+@media screen and (min-width: 1000px) {
+  .container {
     display: grid;
     grid-template-columns: 70% 30%;
     gap: 2rem;
   }
 
-  .container h1{
+  .container h1 {
     font-size: 35px;
   }
 
-  .container h2{
+  .container h2 {
     font-size: 18px;
   }
 
-  .product-items-container{
+  .product-items-container {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  section.cart{
+  section.cart {
     height: fit-content;
     margin-top: 0;
   }
