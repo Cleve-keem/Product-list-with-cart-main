@@ -35,10 +35,10 @@ fetchProductItems();
 const productList = document.querySelector(".product-items-list");
 
 function addProductsToHTML() {
-  productList.innerHTML = "";
+  // productList.innerHTML = "";
   if (listOfProducts.length > 0) {
     listOfProducts.forEach((product, index) => {
-      console.log(product);
+      console.log(product[0]);
       const itemContainer = document.createElement("div");
       itemContainer.classList.add("item-container");
       itemContainer.innerHTML = `<div class="item-view">
@@ -57,7 +57,7 @@ function addProductsToHTML() {
                   </button>
                 </div>
                 <div class="desc">
-                  <p class="item-faded-name">Waffle</p>
+                  <p class="item-faded-name">${product[index]}</p>
                   <h2 class="item-name">Waffle with Berries</h2>
                   <span class="price">$6.50</span>
                 </div>`;
