@@ -31,7 +31,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.item-container.active .item-view .item-img {
+.item-container .item-view.active .item-img {
   border: 3px solid var(--Red);
 }
 
