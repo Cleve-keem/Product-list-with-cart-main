@@ -35,17 +35,18 @@ fetchProductItems();
 const productList = document.querySelector(".product-items-list");
 
 function addProductsToHTML() {
-  // productList.innerHTML = "";
+  productList.innerHTML = "";
   if (listOfProducts.length > 0) {
-    listOfProducts.forEach((product, index) => {
-      console.log(product[0]);
+    listOfProducts.forEach((product) => {
+
+      console.log(product);
       const itemContainer = document.createElement("div");
       itemContainer.classList.add("item-container");
       itemContainer.innerHTML = `<div class="item-view">
                   <img
                     class="item-img"
-                    src="${product[index]?.images.thumbnail}"
-                    alt=""
+                    src="${product?.image.mobile}"
+                    alt="Product image"
                   />
                   <button class="add-to-cart-btn">
                     <img
@@ -57,10 +58,11 @@ function addProductsToHTML() {
                   </button>
                 </div>
                 <div class="desc">
-                  <p class="item-faded-name">${product[index]}</p>
-                  <h2 class="item-name">Waffle with Berries</h2>
-                  <span class="price">$6.50</span>
+                  <p class="item-faded-name">${product.category}</p>
+                  <h2 class="item-name">${product.name}</h2>
+                  <span class="price">$${product.price}</span>
                 </div>`;
+      productList.appendChild(itemContainer);
     });
   }
 }
