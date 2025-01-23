@@ -71,8 +71,22 @@ productList.addEventListener("click", (event) => {
     const parentContainer = event.target.parentElement;
     parentContainer.classList.add(ACTIVE_CLASS);
 
-    const productQuantityContainer = createElement("div");
-    
+    const displayCounter = document.querySelector(".add-to-cart");
+    displayCounter.classList.add(ACTIVE_CLASS);
+    displayCounter.innerHTML = `<div class="decrement-btn">
+                    <img
+                      class="decrement-icon"
+                      src="./assets/images/icon-decrement-quantity.svg"
+                      alt="decrement icon"
+                    />
+                  </div>
+                  <span class="counter">1</span>
+                  <div class="increment-btn">
+                    <img
+                      class="increment-icon"
+                      src="./assets/images/icon-increment-quantity.svg"
+                      alt="increment icon"
+                    />
+                  </div>`;
   }
-
 });
