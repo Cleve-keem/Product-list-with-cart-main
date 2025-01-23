@@ -38,8 +38,6 @@ function addProductsToHTML() {
   productList.innerHTML = "";
   if (listOfProducts.length > 0) {
     listOfProducts.forEach((product) => {
-
-      console.log(product);
       const itemContainer = document.createElement("div");
       itemContainer.classList.add("item-container");
       itemContainer.innerHTML = `<div class="item-view">
@@ -48,9 +46,9 @@ function addProductsToHTML() {
                     src="${product?.image.mobile}"
                     alt="Product image"
                   />
-                  <button class="add-to-cart-btn">
+                  <button class="add-to-cart">
                     <img
-                      class="icon"
+                      class="icon cart-icon"
                       src="./assets/images/icon-add-to-cart.svg"
                       alt="cart icon"
                     />
@@ -72,5 +70,9 @@ productList.addEventListener("click", (event) => {
   if (selectedTagName === "BUTTON") {
     const parentContainer = event.target.parentElement;
     parentContainer.classList.add(ACTIVE_CLASS);
+
+    const productQuantityContainer = createElement("div");
+    
   }
+
 });
