@@ -56,7 +56,8 @@ body {
 }
 
 .add-to-cart img.cart-icon{
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem; */
+  margin: 0;
 }
 
 .item-view .add-to-cart.active {
@@ -84,7 +85,7 @@ body {
   object-fit: cover;
 }
 
-.item-faded-name {
+.item-category {
   color: var(--light-grey);
   font-family: "RedHatText-Regular", system-ui;
   margin-bottom: 0.3rem;
@@ -303,7 +304,7 @@ button.del {
   margin: 1rem 0;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
   .wrapper {
     padding: 4rem;
   }
@@ -322,7 +323,7 @@ button.del {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 900px) {
   .container {
     display: grid;
     grid-template-columns: 70% 30%;
@@ -339,6 +340,36 @@ button.del {
 
   .product-items-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item-view .add-to-cart {
+    min-width: 120px;
+    padding: 5px 10px;
+    font-weight: 300;
+    font-size: 13px;
+  }
+
+  .add-to-cart img.cart-icon{
+    margin-right: 0.5rem;
+  }
+  
+  .item-view .add-to-cart.active{
+    padding: 10px 9px;
+  }
+
+  .item-view .add-to-cart.active .increment-btn,
+  .item-view .add-to-cart.active .decrement-btn {
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+  }
+  
+  .item-container .desc p{
+    font-size: 12px;
+  }
+
+  .item-container .desc h2{
+    font-size: 16px;
   }
 
   section.cart {

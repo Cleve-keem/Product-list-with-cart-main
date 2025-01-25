@@ -46,7 +46,7 @@ function addProductsToHTML() {
                     src="${product?.image.mobile}"
                     alt="Product image"
                   />
-                  <button class="add-to-cart">
+                  <button class="add-to-cart" onclick="addToCart(this)">
                     <img
                       class="icon cart-icon"
                       src="./assets/images/icon-add-to-cart.svg"
@@ -56,7 +56,7 @@ function addProductsToHTML() {
                   </button>
                 </div>
                 <div class="desc">
-                  <p class="item-faded-name">${product.category}</p>
+                  <p class="item-category">${product.category}</p>
                   <h2 class="item-name">${product.name}</h2>
                   <span class="price">$${product.price}</span>
                 </div>`;
@@ -65,28 +65,89 @@ function addProductsToHTML() {
   }
 }
 
-productList.addEventListener("click", (event) => {
-  let selectedTagName = event.target.tagName;
-  if (selectedTagName === "BUTTON") {
-    const parentContainer = event.target.parentElement;
-    parentContainer.classList.add(ACTIVE_CLASS);
 
-    const displayCounter = document.querySelector(".add-to-cart");
-    displayCounter.classList.add(ACTIVE_CLASS);
-    displayCounter.innerHTML = `<div class="decrement-btn">
-                    <img
-                      class="decrement-icon"
-                      src="./assets/images/icon-decrement-quantity.svg"
-                      alt="decrement icon"
-                    />
-                  </div>
-                  <span class="counter">1</span>
-                  <div class="increment-btn">
-                    <img
-                      class="increment-icon"
-                      src="./assets/images/icon-increment-quantity.svg"
-                      alt="increment icon"
-                    />
-                  </div>`;
-  }
-});
+
+function addToCart(currentBtn) {
+  currentBtn.classList.add(ACTIVE_CLASS)
+  currentBtn.innerHTML = `<div class="decrement-btn">
+                      <img
+                        class="decrement-icon"
+                        src="./assets/images/icon-decrement-quantity.svg"
+                        alt="decrement icon" onclick="addQuantity(this)"
+                      />
+                    </div>
+                    <span class="counter">1</span>
+                    <div class="increment-btn">
+                      <img
+                        class="increment-icon"
+                        src="./assets/images/icon-increment-quantity.svg"
+                        alt="increment icon"
+                      />
+                    </div>`;
+  let parentDiv = currentBtn.parentElement
+  parentDiv.classList.add(ACTIVE_CLASS)
+}
+
+function addQuantity(crrentAddQuantity) {
+  let counter = this.parentNode
+  console.log(counter)
+}
+
+
+
+// const addToCartBtn = document.querySelectorAll(".add-to-cart");
+// console.log(addToCartBtn.length)
+// for (let i = 0; i < addToCartBtn.length; i++) {
+//   console.log(addToCartBtn[i])
+//   // addToCartBtn[i].addEventListener("click", function(){
+//   //   console.log("Clicked")
+//   //   this.classList.add(ACTIVE_CLASS)
+//   //   console.log(this.parentElement())
+//   // })
+// }
+
+
+// productList.addEventListener("click", (event) => {
+//   let selectedTagName = event.target.tagName;
+//   console.log(selectedTagName);
+//   if (selectedTagName === "BUTTON") {
+//     const parentContainer = event.target.parentElement;
+//     parentContainer.classList.add(ACTIVE_CLASS);
+
+//     const displayCounter = document.querySelectorAll(".add-to-cart");
+//     displayCounter.forEach(item => {
+//       item.classList.add(ACTIVE_CLASS)
+//       item.innerHTML = `<div class="decrement-btn">
+//       <img
+//         class="decrement-icon"
+//         src="./assets/images/icon-decrement-quantity.svg"
+//         alt="decrement icon"
+//       />
+//     </div>
+//     <span class="counter">1</span>
+//     <div class="increment-btn">
+//       <img
+//         class="increment-icon"
+//         src="./assets/images/icon-increment-quantity.svg"
+//         alt="increment icon"
+//       />
+//     </div>`
+//     })
+//   //   displayCounter.classList.add(ACTIVE_CLASS);
+//   //   displayCounter.innerHTML = `<div class="decrement-btn">
+//   //                   <img
+//   //                     class="decrement-icon"
+//   //                     src="./assets/images/icon-decrement-quantity.svg"
+//   //                     alt="decrement icon"
+//   //                   />
+//   //                 </div>
+//   //                 <span class="counter">1</span>
+//   //                 <div class="increment-btn">
+//   //                   <img
+//   //                     class="increment-icon"
+//   //                     src="./assets/images/icon-increment-quantity.svg"
+//   //                     alt="increment icon"
+//   //                   />
+//   //                 </div>`;
+//   // }
+// }});
