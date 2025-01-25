@@ -30,8 +30,6 @@ async function fetchProductItems() {
 }
 fetchProductItems();
 
-// console.log(listOfProducts)
-
 const productList = document.querySelector(".product-items-list");
 
 function addProductsToHTML() {
@@ -65,35 +63,46 @@ function addProductsToHTML() {
   }
 }
 
-
+let currentQuantity = 1;
 
 function addToCart(currentBtn) {
-  currentBtn.classList.add(ACTIVE_CLASS)
+  currentBtn.classList.add(ACTIVE_CLASS);
   currentBtn.innerHTML = `<div class="decrement-btn">
                       <img
                         class="decrement-icon"
                         src="./assets/images/icon-decrement-quantity.svg"
-                        alt="decrement icon" onclick="addQuantity(this)"
+                        alt="decrement icon" onclick="decreaseQuantity(this)"
                       />
                     </div>
-                    <span class="counter">1</span>
+                    <div class="counter">${currentQuantity}</div>
                     <div class="increment-btn">
                       <img
                         class="increment-icon"
                         src="./assets/images/icon-increment-quantity.svg"
-                        alt="increment icon"
+                        alt="increment icon" onclick="increaseQuantity(this)"
                       />
                     </div>`;
-  let parentDiv = currentBtn.parentElement
-  parentDiv.classList.add(ACTIVE_CLASS)
+  const parentDiv = currentBtn.parentElement;
+  parentDiv.classList.add(ACTIVE_CLASS);
 }
 
-function addQuantity(crrentAddQuantity) {
-  let counter = this.parentNode
-  console.log(counter)
+function decreaseQuantity(decrementBtn) {
+  const parentDiv = decrementBtn.parentElement;
+  const nextSibling = parentDiv.nextElementSibling;
+  if (currentQuantity > 1) {
+    currentQuantity--;
+    nextSibling.innerHTML = currentQuantity;
+  }
 }
 
+function increaseQuantity(increaseBtn) {
+  const parentDiv = increaseBtn.parentElement;
+  const previousSibling = parentDiv.previousElementSibling;
+  previousSibling.innerHTML = currentQuantity;
+  currentQuantity++;
+}
 
+// console.log(currentQuantity);
 
 // const addToCartBtn = document.querySelectorAll(".add-to-cart");
 // console.log(addToCartBtn.length)
@@ -105,7 +114,6 @@ function addQuantity(crrentAddQuantity) {
 //   //   console.log(this.parentElement())
 //   // })
 // }
-
 
 // productList.addEventListener("click", (event) => {
 //   let selectedTagName = event.target.tagName;
