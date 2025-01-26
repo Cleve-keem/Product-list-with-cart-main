@@ -19,7 +19,9 @@ startNewOrderbtn.addEventListener("click", toggleOrderNotification);
 
 let listOfProducts = []; // creating an array
 let cart = {};
+let cartLIst = [];
 
+// fetch products from the json file
 async function fetchProductItems() {
   try {
     const response = await fetch("data.json");
@@ -33,6 +35,7 @@ async function fetchProductItems() {
 }
 fetchProductItems();
 
+// Load item to HTML
 function addProductsToHTML() {
   productList.innerHTML = "";
   if (listOfProducts.length > 0) {
@@ -40,13 +43,13 @@ function addProductsToHTML() {
       const itemContainer = document.createElement("div");
       itemContainer.classList.add("item-container");
       itemContainer.innerHTML = `
-        <div class="item-view">
+        <div class="item-view" data-id="${index}">
           <img
             class="item-img"
             src="${product.image.mobile}"
             alt="Product image"
           />
-          <div class="add-to-cart" data-id="${index}">
+          <div class="add-to-cart">
             <img
               class="icon cart-icon"
               src="./assets/images/icon-add-to-cart.svg"
@@ -65,20 +68,34 @@ function addProductsToHTML() {
   }
 }
 
+//
 productList.addEventListener("click", (event) => {
   const addToCartBtn = event.target.closest(".add-to-cart");
   if (addToCartBtn) {
-    const productId = addToCartBtn.dataset.id;
-    if (!cart[productId]) {
+    const itemView = addToCartBtn.parentElement;
+    const itemContainer = itemView.parentElement;
+    const productId = itemView.dataset.id;
+    const productCategory =
+      itemContainer.querySelector(".item-category").innerHTML;
+    const selectedProduct = listOfProducts.filter(
+      (product) => product.category == productCategory
+    );
+
+    if(!cart[productId]){
       cart[productId] = 1;
-    } else {
-      cart[productId]++;
     }
-    upadateCart(addToCartBtn, productId);
+
+    cartLIst.push({ ...selectedProduct, productId });
+    updateCart(addToCartBtn, productId);
   }
 });
 
-function upadateCart(button, productId) {
+console.log(cartLIst);
+
+function updateCart(button, productId) {
+  const parentDiv = button.parentElement; // get the parent element
+  parentDiv.classList.add(ACTIVE_CLASS);
+
   button.classList.add(ACTIVE_CLASS);
   button.innerHTML = `
     <div class="decrement-btn">
@@ -89,6 +106,49 @@ function upadateCart(button, productId) {
       <img
         class="increment-icon" src="./assets/images/icon-increment-quantity.svg" alt="increment icon" />
     </div>`;
+
+  const decrementBtn = parentDiv.querySelector(".decrement-btn");
+  const incrementBtn = parentDiv.querySelector(".increment-btn");
+
+  decrementBtn.addEventListener("click", () =>
+    decreaseQuantity(button, productId, parentDiv)
+  );
+  incrementBtn.addEventListener("click", () =>
+    increaseQuantity(button, productId)
+  );
+}
+
+function decreaseQuantity(button, productId, parentDiv) {
+  if (cart[productId] > 1) {
+    cart[productId]--;
+  } else {
+    delete cart[productId];
+    resetCartButton(button, parentDiv);
+    return;
+  }
+
+  const counter = button.querySelector(".counter");
+  counter.innerHTML = cart[productId];
+}
+
+function increaseQuantity(button, productId) {
+  if (cart[productId] < 10) {
+    cart[productId]++;
+  } else {
+    alert(`You can't have more than 10 of this recipe!`);
+    return;
+  }
+
+  const counter = button.querySelector(".counter");
+  counter.innerHTML = cart[productId];
+}
+
+function resetCartButton(button, parentDiv) {
+  parentDiv.classList.remove(ACTIVE_CLASS);
+  button.classList.remove(ACTIVE_CLASS);
+  button.innerHTML = `
+    <img class="icon cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="cart icon" />
+    Add to Cart`;
 }
 
 // let currentQuantity = 1;
