@@ -18,8 +18,9 @@ overlay.addEventListener("click", toggleOrderNotification);
 startNewOrderbtn.addEventListener("click", toggleOrderNotification);
 
 let listOfProducts = []; // creating an array
-let cart = {};
-let cartLIst = [];
+// let cart = {};
+// let quantity;
+const cartList = [];
 
 // fetch products from the json file
 async function fetchProductItems() {
@@ -68,40 +69,52 @@ function addProductsToHTML() {
   }
 }
 
-//
+// Get selected Product
 productList.addEventListener("click", (event) => {
   const addToCartBtn = event.target.closest(".add-to-cart");
   if (addToCartBtn) {
     const itemView = addToCartBtn.parentElement;
     const itemContainer = itemView.parentElement;
-    const productId = itemView.dataset.id;
     const productCategory =
       itemContainer.querySelector(".item-category").innerHTML;
-    const selectedProduct = listOfProducts.filter(
-      (product) => product.category == productCategory
+
+    // Check if product already exist
+    const existingProduct = cartList.find(
+      (product) => product.category === productCategory
     );
 
-    if(!cart[productId]){
-      cart[productId] = 1;
+    if (existingProduct) {
+      existingProduct.quantity += 0;
+    } else {
+      const selectedProductDetails = listOfProducts.find(
+        (product) => product.category === productCategory
+      );
+      cartList.push({ ...selectedProductDetails, quantity: 1 });
     }
-
-    cartLIst.push({ ...selectedProduct, productId });
-    updateCart(addToCartBtn, productId);
+    updateCart(addToCartBtn, productCategory);
   }
+
+  // console.log(quantity);
+  // const productId = itemView.dataset.id;
+
+  // if (!cart[productId]) {
+  //   cart[productId] = 1;
+  // }
 });
 
-console.log(cartLIst);
-
-function updateCart(button, productId) {
+function updateCart(button, productCategory) {
   const parentDiv = button.parentElement; // get the parent element
-  parentDiv.classList.add(ACTIVE_CLASS);
+  const product = cartList.find(
+    (product) => product.category === productCategory
+  );
 
+  parentDiv.classList.add(ACTIVE_CLASS);
   button.classList.add(ACTIVE_CLASS);
   button.innerHTML = `
     <div class="decrement-btn">
       <img class="decrement-icon" src="./assets/images/icon-decrement-quantity.svg" alt="decrement icon" />
     </div>
-    <div class="counter">${cart[productId]}</div>
+    <div class="counter">${product.quantity}</div>
     <div class="increment-btn">
       <img
         class="increment-icon" src="./assets/images/icon-increment-quantity.svg" alt="increment icon" />
@@ -111,36 +124,43 @@ function updateCart(button, productId) {
   const incrementBtn = parentDiv.querySelector(".increment-btn");
 
   decrementBtn.addEventListener("click", () =>
-    decreaseQuantity(button, productId, parentDiv)
+    decreaseQuantity(button, productCategory, parentDiv)
   );
   incrementBtn.addEventListener("click", () =>
-    increaseQuantity(button, productId)
+    increaseQuantity(button, productCategory)
   );
 }
 
-function decreaseQuantity(button, productId, parentDiv) {
-  if (cart[productId] > 1) {
-    cart[productId]--;
+function decreaseQuantity(button, productCategory, parentDiv) {
+  const product = cartList.find(
+    (product) => product.category === productCategory
+  );
+  if (product.quantity > 1) {
+    product.quantity -= 1;
   } else {
-    delete cart[productId];
+    cartList = cartList.filter(
+      (product) => product.category !== productCategory
+    );
     resetCartButton(button, parentDiv);
     return;
   }
 
   const counter = button.querySelector(".counter");
-  counter.innerHTML = cart[productId];
+  counter.innerHTML = product.quantity;
 }
 
-function increaseQuantity(button, productId) {
-  if (cart[productId] < 10) {
-    cart[productId]++;
+function increaseQuantity(button, productCategory) {
+  const product = cartList.find(
+    (product) => product.category === productCategory
+  );
+  if (product.quantity < 10) {
+    product.quantity += 1;
   } else {
     alert(`You can't have more than 10 of this recipe!`);
     return;
   }
-
   const counter = button.querySelector(".counter");
-  counter.innerHTML = cart[productId];
+  counter.innerHTML = product.quantity;
 }
 
 function resetCartButton(button, parentDiv) {
