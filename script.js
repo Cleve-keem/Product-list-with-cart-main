@@ -18,7 +18,7 @@ overlay.addEventListener("click", toggleOrderNotification);
 startNewOrderbtn.addEventListener("click", toggleOrderNotification);
 
 let listOfProducts = [];
-const cartList = [];
+let cartList = [];
 
 // fetch products from the json file
 async function fetchProductItems() {
@@ -132,10 +132,10 @@ function decreaseQuantity(button, productCategory, parentDiv) {
     cartList = cartList.filter(
       (product) => product.category !== productCategory
     );
+    console.log(button);
     resetCartButton(button, parentDiv);
     return;
   }
-
   const counter = button.querySelector(".counter");
   counter.innerHTML = product.quantity;
 }
@@ -145,7 +145,7 @@ function increaseQuantity(button, productCategory) {
   if (product.quantity < 10) {
     product.quantity += 1;
   } else {
-    alert(`You can't have more than 10 of this recipe!`);
+    alert(`You can't have more than 10 items of each recipes!`);
     return;
   }
   const counter = button.querySelector(".counter");
@@ -156,6 +156,16 @@ function resetCartButton(button, parentDiv) {
   parentDiv.classList.remove(ACTIVE_CLASS);
   button.classList.remove(ACTIVE_CLASS);
   button.innerHTML = `
-    <img class="icon cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="cart icon" />
-    Add to Cart`;
+   <img class="icon cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="cart icon" />
+   Add to Cart`;
 }
+
+const cart = document.querySelector(".cart");
+const cartHead = cart.querySelector(".cart-heading");
+const cartPreview = cart.querySelector(".cart-preview");
+// const cartItemList = cart.querySelector("");
+
+if (cartList.length > 0) {
+}
+
+// console.log(cartHead, cartPreview);
