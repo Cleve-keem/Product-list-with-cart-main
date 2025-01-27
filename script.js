@@ -17,9 +17,7 @@ placeOrderBtn.addEventListener("click", toggleOrderNotification);
 overlay.addEventListener("click", toggleOrderNotification);
 startNewOrderbtn.addEventListener("click", toggleOrderNotification);
 
-let listOfProducts = []; // creating an array
-// let cart = {};
-// let quantity;
+let listOfProducts = []; 
 const cartList = [];
 
 // fetch products from the json file
@@ -93,13 +91,6 @@ productList.addEventListener("click", (event) => {
     }
     updateCart(addToCartBtn, productCategory);
   }
-
-  // console.log(quantity);
-  // const productId = itemView.dataset.id;
-
-  // if (!cart[productId]) {
-  //   cart[productId] = 1;
-  // }
 });
 
 function updateCart(button, productCategory) {
@@ -170,116 +161,3 @@ function resetCartButton(button, parentDiv) {
     <img class="icon cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="cart icon" />
     Add to Cart`;
 }
-
-// let currentQuantity = 1;
-// const cartList = [];
-
-// function addToCart(currentBtn) {
-//   console.log("default", currentBtn);
-//   currentBtn.classList.add(ACTIVE_CLASS);
-//   console.log("add active class", currentBtn);
-//   currentBtn.innerHTML = `<div class="decrement-btn">
-//   <img
-//     class="decrement-icon"
-//     src="./assets/images/icon-decrement-quantity.svg"
-//     alt="decrement icon" onclick="decreaseQuantity(this)"
-//   />
-//   </div>
-//   <div class="counter">${currentQuantity}</div>
-//   <div class="increment-btn">
-//     <img
-//       class="increment-icon"
-//       src="./assets/images/icon-increment-quantity.svg"
-//       alt="increment icon" onclick="increaseQuantity(this)"
-//     />
-//   </div>`;
-//   const parentDiv = currentBtn.parentElement;
-//   parentDiv.classList.add(ACTIVE_CLASS);
-// }
-
-// function decreaseQuantity(decrementBtn) {
-//   const parentDiv = decrementBtn.parentElement;
-//   const nextSibling = parentDiv.nextElementSibling;
-//   if (currentQuantity < 1) {
-//     let defaultCartbtn = parentDiv.parentElement;
-//     console.log("before", defaultCartbtn);
-//     defaultCartbtn.classList.remove(ACTIVE_CLASS);
-//     console.log("after", defaultCartbtn);
-//     // defaultCartbtn.innerHTML = `<button class="add-to-cart" onclick="addToCart(this)">
-//     // <img class="icon cart-icon"
-//     //   src="./assets/images/icon-add-to-cart.svg"
-//     //   alt="cart icon"
-//     // />Add to Cart
-//     // </button>`;
-
-//     // console.log(addToCartBtn);
-//   } else {
-//     nextSibling.innerHTML = currentQuantity;
-//     currentQuantity--;
-//   }
-// }
-
-// function increaseQuantity(increaseBtn) {
-//   const parentDiv = increaseBtn.parentElement;
-//   const previousSibling = parentDiv.previousElementSibling;
-//   previousSibling.innerHTML = currentQuantity;
-//   currentQuantity++;
-// }
-
-// console.log(currentQuantity);
-
-// const addToCartBtn = document.querySelectorAll(".add-to-cart");
-// console.log(addToCartBtn.length)
-// for (let i = 0; i < addToCartBtn.length; i++) {
-//   console.log(addToCartBtn[i])
-//   // addToCartBtn[i].addEventListener("click", function(){
-//   //   console.log("Clicked")
-//   //   this.classList.add(ACTIVE_CLASS)
-//   //   console.log(this.parentElement())
-//   // })
-// }
-
-// productList.addEventListener("click", (event) => {
-//   let selectedTagName = event.target.tagName;
-//   console.log(selectedTagName);
-//   if (selectedTagName === "BUTTON") {
-//     const parentContainer = event.target.parentElement;
-//     parentContainer.classList.add(ACTIVE_CLASS);
-
-//     const displayCounter = document.querySelectorAll(".add-to-cart");
-//     displayCounter.forEach(item => {
-//       item.classList.add(ACTIVE_CLASS)
-//       item.innerHTML = `<div class="decrement-btn">
-//       <img
-//         class="decrement-icon"
-//         src="./assets/images/icon-decrement-quantity.svg"
-//         alt="decrement icon"
-//       />
-//     </div>
-//     <span class="counter">1</span>
-//     <div class="increment-btn">
-//       <img
-//         class="increment-icon"
-//         src="./assets/images/icon-increment-quantity.svg"
-//         alt="increment icon"
-//       />
-//     </div>`
-//     })
-//   //   displayCounter.classList.add(ACTIVE_CLASS);
-//   //   displayCounter.innerHTML = `<div class="decrement-btn">
-//   //                   <img
-//   //                     class="decrement-icon"
-//   //                     src="./assets/images/icon-decrement-quantity.svg"
-//   //                     alt="decrement icon"
-//   //                   />
-//   //                 </div>
-//   //                 <span class="counter">1</span>
-//   //                 <div class="increment-btn">
-//   //                   <img
-//   //                     class="increment-icon"
-//   //                     src="./assets/images/icon-increment-quantity.svg"
-//   //                     alt="increment icon"
-//   //                   />
-//   //                 </div>`;
-//   // }
-// }});
