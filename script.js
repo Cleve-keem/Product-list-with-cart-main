@@ -94,6 +94,7 @@ productList.addEventListener("click", (event) => {
       cartList.push({ ...selectedProductDetails, quantity: 1 });
     }
     updateCart(addToCartBtn, productCategory);
+    updateCartPreview();
   }
 });
 
@@ -138,6 +139,7 @@ function decreaseQuantity(button, productCategory, parentDiv) {
   }
   const counter = button.querySelector(".counter");
   counter.innerHTML = product.quantity;
+  updateCartPreview();
 }
 
 function increaseQuantity(button, productCategory) {
@@ -150,6 +152,7 @@ function increaseQuantity(button, productCategory) {
   }
   const counter = button.querySelector(".counter");
   counter.innerHTML = product.quantity;
+  updateCartPreview();
 }
 
 function resetCartButton(button, parentDiv) {
@@ -164,28 +167,36 @@ const cart = document.querySelector(".cart");
 const cartHead = cart.querySelector(".cart-heading");
 const cartPreview = cart.querySelector(".cart-preview");
 const cartItemList = cart.querySelector(".cart-list");
-const emptyCart = cart.querySelector('.cart-empty');
+const emptyCart = cart.querySelector(".cart-empty");
 
-if (cartList.length > 0) {
-  cartList.map((product)=>{
-    const li = document.createElement("li");
-    li.classList.add("list-item");
-    li.innerHTML = `
-      <h3>${product.name}</h3>
-      <div class="item-detail">
-        <div class="item-price-details">
-          <span class="quantity">${product.quantity}x</span>
-          <span class="price">@${product.price}</span>
-          <span class="item-total">${product.quantity * product.price}</span>
-        </div>
-        <button class="del">
-          <img src="./assets/images/icon-remove-item.svg" alt="del" />
-        </button>
-      </div>`;
-  })
-} else {
-  cartPreview.classList.add(HIDDEN_CLASS);
-  emptyCart.classList.remove(HIDDEN_CLASS);
+function updateCartPreview() {
+  cartItemList.innerHTML = ""; // Clear current cart UI
+
+  if (cartList.length > 0) {
+    cartPreview.classList.remove(HIDDEN_CLASS); // Show cart preview
+    emptyCart.classList.add(HIDDEN_CLASS); // Hide empty cart message
+
+    cartList.map((product) => {
+      const li = document.createElement("li");
+      li.classList.add("list-item");
+      li.innerHTML = `
+        <h3>${product.name}</h3>
+        <div class="item-detail">
+          <div class="item-price-details">
+            <span class="quantity">${product.quantity}x</span>
+            <span class="price">@${product.price}</span>
+            <span class="item-total">$${(product.quantity * product.price).toFixed(2)}</span>
+          </div>
+          <button class="del">
+            <img src="./assets/images/icon-remove-item.svg" alt="del" />
+          </button>
+        </div>`;
+      cartItemList.appendChild(li);
+    });
+  } else {
+    cartPreview.classList.add(HIDDEN_CLASS);
+    emptyCart.classList.remove(HIDDEN_CLASS);
+  }
 }
 
 // console.log(cartHead, cartPreview);
