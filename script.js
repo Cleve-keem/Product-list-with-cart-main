@@ -163,9 +163,29 @@ function resetCartButton(button, parentDiv) {
 const cart = document.querySelector(".cart");
 const cartHead = cart.querySelector(".cart-heading");
 const cartPreview = cart.querySelector(".cart-preview");
-// const cartItemList = cart.querySelector("");
+const cartItemList = cart.querySelector(".cart-list");
+const emptyCart = cart.querySelector('.cart-empty');
 
 if (cartList.length > 0) {
+  cartList.map((product)=>{
+    const li = document.createElement("li");
+    li.classList.add("list-item");
+    li.innerHTML = `
+      <h3>${product.name}</h3>
+      <div class="item-detail">
+        <div class="item-price-details">
+          <span class="quantity">${product.quantity}x</span>
+          <span class="price">@${product.price}</span>
+          <span class="item-total">${product.quantity * product.price}</span>
+        </div>
+        <button class="del">
+          <img src="./assets/images/icon-remove-item.svg" alt="del" />
+        </button>
+      </div>`;
+  })
+} else {
+  cartPreview.classList.add(HIDDEN_CLASS);
+  emptyCart.classList.remove(HIDDEN_CLASS);
 }
 
 // console.log(cartHead, cartPreview);
