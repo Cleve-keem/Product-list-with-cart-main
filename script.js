@@ -17,7 +17,7 @@ placeOrderBtn.addEventListener("click", toggleOrderNotification);
 overlay.addEventListener("click", toggleOrderNotification);
 startNewOrderbtn.addEventListener("click", toggleOrderNotification);
 
-let listOfProducts = []; 
+let listOfProducts = [];
 const cartList = [];
 
 // fetch products from the json file
@@ -67,6 +67,11 @@ function addProductsToHTML() {
   }
 }
 
+function findProduct(array, productCategory) {
+  const product = array.find((product) => product.category === productCategory);
+  return product;
+}
+
 // Get selected Product
 productList.addEventListener("click", (event) => {
   const addToCartBtn = event.target.closest(".add-to-cart");
@@ -77,15 +82,14 @@ productList.addEventListener("click", (event) => {
       itemContainer.querySelector(".item-category").innerHTML;
 
     // Check if product already exist
-    const existingProduct = cartList.find(
-      (product) => product.category === productCategory
-    );
+    const existingProduct = findProduct(cartList, productCategory);
 
     if (existingProduct) {
       existingProduct.quantity += 0;
     } else {
-      const selectedProductDetails = listOfProducts.find(
-        (product) => product.category === productCategory
+      const selectedProductDetails = findProduct(
+        listOfProducts,
+        productCategory
       );
       cartList.push({ ...selectedProductDetails, quantity: 1 });
     }
@@ -95,9 +99,7 @@ productList.addEventListener("click", (event) => {
 
 function updateCart(button, productCategory) {
   const parentDiv = button.parentElement; // get the parent element
-  const product = cartList.find(
-    (product) => product.category === productCategory
-  );
+  const product = findProduct(cartList, productCategory);
 
   parentDiv.classList.add(ACTIVE_CLASS);
   button.classList.add(ACTIVE_CLASS);
@@ -123,9 +125,7 @@ function updateCart(button, productCategory) {
 }
 
 function decreaseQuantity(button, productCategory, parentDiv) {
-  const product = cartList.find(
-    (product) => product.category === productCategory
-  );
+  const product = findProduct(cartList, productCategory);
   if (product.quantity > 1) {
     product.quantity -= 1;
   } else {
@@ -141,9 +141,7 @@ function decreaseQuantity(button, productCategory, parentDiv) {
 }
 
 function increaseQuantity(button, productCategory) {
-  const product = cartList.find(
-    (product) => product.category === productCategory
-  );
+  const product = findProduct(cartList, productCategory);
   if (product.quantity < 10) {
     product.quantity += 1;
   } else {
