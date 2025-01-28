@@ -5,6 +5,7 @@ const orderNotification = document.getElementById(
 const placeOrderBtn = document.getElementById("confirm-order-btn");
 const overlay = document.getElementById("overlay");
 const productList = document.querySelector(".product-items-list");
+const title = document.querySelector('.title');
 
 const HIDDEN_CLASS = "hidden";
 const ACTIVE_CLASS = "active";
@@ -256,8 +257,18 @@ placeOrderBtn.addEventListener("click", () => {
       </div>`;
     soldOutItems.appendChild(li);
   });
-calcTotalPrice(totalOrderSales);
+  calcTotalPrice(totalOrderSales);
   toggleOrderNotification();
 });
 overlay.addEventListener("click", toggleOrderNotification);
-startNewOrderbtn.addEventListener("click", toggleOrderNotification);
+startNewOrderbtn.addEventListener("click", () => {
+  const addToCartBtns = document.querySelectorAll(".add-to-cart");
+  addToCartBtns.forEach((btn)=> resetCartButton(btn, btn.parentElement))
+  cartList = [];
+  updateCartPreview();
+  title.scrollIntoView({
+    top: 0,
+    behavior: "smooth"
+  })
+  toggleOrderNotification();
+});
