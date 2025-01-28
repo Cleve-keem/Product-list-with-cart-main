@@ -55,7 +55,7 @@ body {
   background-color: var(--White);
 }
 
-.add-to-cart img.cart-icon{
+.add-to-cart img.cart-icon {
   /* margin-right: 0.5rem; */
   margin: 0;
 }
@@ -226,6 +226,7 @@ button.del {
   padding: 15px 0;
   background-color: var(--Red);
   color: var(--Rose-50);
+  margin-top: auto;
 }
 
 #overlay {
@@ -241,6 +242,8 @@ button.del {
 
 .confirmation {
   max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 80px;
   bottom: 0;
@@ -250,7 +253,7 @@ button.del {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--Rose-50);
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .confirmed-img {
@@ -279,7 +282,13 @@ button.del {
   margin-bottom: 1.5rem;
 }
 
+.sold-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
 .sold-item {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -349,11 +358,11 @@ button.del {
     font-size: 13px;
   }
 
-  .add-to-cart img.cart-icon{
+  .add-to-cart img.cart-icon {
     margin-right: 0.5rem;
   }
-  
-  .item-view .add-to-cart.active{
+
+  .item-view .add-to-cart.active {
     padding: 10px 9px;
   }
 
@@ -363,12 +372,12 @@ button.del {
     height: 15px;
     padding: 2px;
   }
-  
-  .item-container .desc p{
+
+  .item-container .desc p {
     font-size: 12px;
   }
 
-  .item-container .desc h2{
+  .item-container .desc h2 {
     font-size: 16px;
   }
 

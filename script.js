@@ -9,14 +9,6 @@ const productList = document.querySelector(".product-items-list");
 const HIDDEN_CLASS = "hidden";
 const ACTIVE_CLASS = "active";
 
-function toggleOrderNotification() {
-  orderNotification.classList.toggle(HIDDEN_CLASS);
-}
-
-placeOrderBtn.addEventListener("click", toggleOrderNotification);
-overlay.addEventListener("click", toggleOrderNotification);
-startNewOrderbtn.addEventListener("click", toggleOrderNotification);
-
 let listOfProducts = [];
 let cartList = [];
 
@@ -208,9 +200,9 @@ function updateCartPreview() {
           resetCartButton(productBtn, productBtn.parentElement);
         }
         updateCartPreview(); // Re-render the cart list
-        calcTotalPrice();
+        calcTotalPrice(orderTotalPrice);
       });
-      calcTotalPrice();
+      calcTotalPrice(orderTotalPrice);
     });
   } else {
     cartPreview.classList.add(HIDDEN_CLASS);
@@ -218,12 +210,54 @@ function updateCartPreview() {
   }
 }
 
-function calcTotalPrice() {
+function calcTotalPrice(element) {
   const totalOrderPrice = cartList.reduce(
     (acc, product) => acc + product.quantity * product.price,
     0
   );
-  orderTotalPrice.innerHTML = `$${totalOrderPrice.toFixed(2)}`;
+  element.innerHTML = `$${totalOrderPrice.toFixed(2)}`;
 }
 
-// console.log(cartHead, cartPreview);
+// Toggle the order buttons
+function toggleOrderNotification() {
+  orderNotification.classList.toggle(HIDDEN_CLASS);
+}
+
+const salesPreview = document.querySelector(".sales-preview");
+const soldOutItems = salesPreview.querySelector(".sold-list");
+const totalOrderSales = salesPreview.querySelector(".order-price");
+
+placeOrderBtn.addEventListener("click", () => {
+  soldOutItems.innerHTML = "";
+  cartList.forEach((product) => {
+    const li = document.createElement("li");
+    li.classList.add("sold-item");
+    li.innerHTML = `
+      <div class="sold-desc">
+        <img
+          class="thumbnail"
+          src="${product.image.thumbnail}"
+          alt="${product.name + "image"}"
+        />
+        <div class="text">
+          <h3>${product.name}</h3>
+          <div class="item-detail">
+            <div class="item-price-details order">
+              <span class="quantity">${product.quantity}x</span>
+              <span class="price">@${product.price.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sold-price">
+        <span class="item-total">$${(product.quantity * product.price).toFixed(
+          2
+        )}</span>
+      </div>`;
+    soldOutItems.appendChild(li);
+  });
+calcTotalPrice(totalOrderSales);
+  toggleOrderNotification();
+});
+overlay.addEventListener("click", toggleOrderNotification);
+startNewOrderbtn.addEventListener("click", toggleOrderNotification);
