@@ -60,7 +60,7 @@ function addProductsToHTML() {
         <div class="desc">
           <p class="item-category">${product.category}</p>
           <h2 class="item-name">${product.name}</h2>
-          <span class="price">$${product.price}</span>
+          <span class="price">$${product.price.toFixed(2)}</span>
         </div>`;
       productList.appendChild(itemContainer);
     });
@@ -134,11 +134,11 @@ function decreaseQuantity(button, productCategory, parentDiv) {
       (product) => product.category !== productCategory
     );
     resetCartButton(button, parentDiv);
+    updateCartPreview();
     return;
   }
   const counter = button.querySelector(".counter");
   counter.innerHTML = product.quantity;
-  updateCartPreview();
 }
 
 function increaseQuantity(button, productCategory) {
@@ -167,6 +167,7 @@ const cartHead = cart.querySelector(".cart-heading");
 const cartPreview = cart.querySelector(".cart-preview");
 const cartItemList = cart.querySelector(".cart-list");
 const emptyCart = cart.querySelector(".cart-empty");
+const orderTotalPrice = cart.querySelector(".order-price");
 
 function updateCartPreview() {
   cartItemList.innerHTML = ""; // Clear current cart UI
@@ -183,7 +184,7 @@ function updateCartPreview() {
         <div class="item-detail">
           <div class="item-price-details">
             <span class="quantity">${product.quantity}x</span>
-            <span class="price">@${product.price}</span>
+            <span class="price">@${product.price.toFixed(2)}</span>
             <span class="item-total">$${(
               product.quantity * product.price
             ).toFixed(2)}</span>
@@ -199,20 +200,30 @@ function updateCartPreview() {
           (item) => item.category !== product.category
         );
         const productBtn = [...document.querySelectorAll(".add-to-cart")].find(
-          (btn) =>
-            btn.parentElement.parentElement.querySelector(".item-name")
+          (addToCartBtn) =>
+            addToCartBtn.parentElement.parentElement.querySelector(".item-name")
               .textContent === product.name
         );
         if (productBtn) {
           resetCartButton(productBtn, productBtn.parentElement);
         }
         updateCartPreview(); // Re-render the cart list
+        calcTotalPrice();
       });
+      calcTotalPrice();
     });
   } else {
     cartPreview.classList.add(HIDDEN_CLASS);
     emptyCart.classList.remove(HIDDEN_CLASS);
   }
+}
+
+function calcTotalPrice() {
+  const totalOrderPrice = cartList.reduce(
+    (acc, product) => acc + product.quantity * product.price,
+    0
+  );
+  orderTotalPrice.innerHTML = `$${totalOrderPrice.toFixed(2)}`;
 }
 
 // console.log(cartHead, cartPreview);
