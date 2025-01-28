@@ -244,7 +244,7 @@ button.del {
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   top: 80px;
   bottom: 0;
   left: 0;
@@ -253,7 +253,6 @@ button.del {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--Rose-50);
-  /* overflow-y: auto; */
 }
 
 .confirmed-img {
@@ -283,8 +282,9 @@ button.del {
 }
 
 .sold-list {
-  max-height: 250px;
+  max-height: 200px;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .sold-item {
