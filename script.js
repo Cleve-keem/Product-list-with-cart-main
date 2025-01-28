@@ -133,7 +133,6 @@ function decreaseQuantity(button, productCategory, parentDiv) {
     cartList = cartList.filter(
       (product) => product.category !== productCategory
     );
-    console.log(button);
     resetCartButton(button, parentDiv);
     return;
   }
@@ -185,13 +184,30 @@ function updateCartPreview() {
           <div class="item-price-details">
             <span class="quantity">${product.quantity}x</span>
             <span class="price">@${product.price}</span>
-            <span class="item-total">$${(product.quantity * product.price).toFixed(2)}</span>
+            <span class="item-total">$${(
+              product.quantity * product.price
+            ).toFixed(2)}</span>
           </div>
           <button class="del">
             <img src="./assets/images/icon-remove-item.svg" alt="del" />
           </button>
         </div>`;
       cartItemList.appendChild(li);
+      const delBtn = li.querySelector(".del");
+      delBtn.addEventListener("click", () => {
+        cartList = cartList.filter(
+          (item) => item.category !== product.category
+        );
+        const productBtn = [...document.querySelectorAll(".add-to-cart")].find(
+          (btn) =>
+            btn.parentElement.parentElement.querySelector(".item-name")
+              .textContent === product.name
+        );
+        if (productBtn) {
+          resetCartButton(productBtn, productBtn.parentElement);
+        }
+        updateCartPreview(); // Re-render the cart list
+      });
     });
   } else {
     cartPreview.classList.add(HIDDEN_CLASS);
